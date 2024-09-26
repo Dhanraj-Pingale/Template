@@ -32,13 +32,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Function to list all databases (useful for testing connection)
-async function listDatabases(client) {
-  const databasesList = await client.db().admin().listDatabases();
-  console.log("Databases:");
-  databasesList.databases.forEach((db) => console.log(` - ${db.name}`));
-}
-
 // MongoDB connection and Passport configuration
 async function main() {
   const client = new MongoClient(uri);
@@ -47,9 +40,6 @@ async function main() {
     // Connect to the MongoDB cluster
     await client.connect();
     console.log("Connected to MongoDB");
-
-    // List databases to verify the connection (can be removed in production)
-    await listDatabases(client);
 
     const usersCollection = client.db("Test").collection("users");
 
