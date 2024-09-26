@@ -38,6 +38,10 @@ const Login = () => {
     }
   };
 
+  const handleRegister = () => {
+    navigate("/register"); // Navigate to the /register route when button is clicked
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-80">
@@ -81,6 +85,17 @@ const Login = () => {
         {message && (
           <p className="mt-4 text-green-600 text-center">{message}</p>
         )}
+
+        {/* Register option */}
+        <div className="mt-6 text-center">
+          <p className="text-gray-600">Don't have an account?</p>
+          <p
+            onClick={handleRegister}
+            className="text-blue-600 hover:underline cursor-pointer"
+          >
+            Register here
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -25,11 +25,17 @@ const Register = () => {
       });
   };
 
+  const handleLoginRedirect = () => {
+    navigate("/login");
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-80">
         <h2 className="text-2xl font-semibold mb-4 text-center">Register</h2>
+        
         {error && <p className="text-red-500 text-center">{error}</p>}
+
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <input
@@ -71,6 +77,17 @@ const Register = () => {
             Register
           </button>
         </form>
+
+        {/* Option to go to login page */}
+        <div className="mt-4 text-center">
+          <p className="text-gray-600">Already registered?</p>
+          <button
+            onClick={handleLoginRedirect}
+            className="text-blue-600 hover:underline"
+          >
+            Go to Login
+          </button>
+        </div>
       </div>
     </div>
   );
