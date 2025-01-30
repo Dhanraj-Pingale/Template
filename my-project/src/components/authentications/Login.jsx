@@ -19,7 +19,7 @@ const Login = () => {
 
     try {
       // API call to authenticate user
-      const response = await axios.post("http://localhost:3000/logindb", {
+      const response = await axios.post("http://localhost:3000/auth/logindb", {
         email,
         password,
       });

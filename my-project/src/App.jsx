@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/authentications/Login";
 import Register from "./components/authentications/Register";
-import Homepage from "./components/homepages/Homepage";
+import Homepage from "./components/pages/Homepage";
 import ProtectedRoute from "./components/authentications/ProtectedRoute";
 import AuthProvider from "./context/AuthContext";
-import About from "./components/homepages/About";
+import About from "./components/pages/About";
 
 const App = () => {
   return (
