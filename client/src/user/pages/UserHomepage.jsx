@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
-const Homepage = () => {
+const UserHomepage = () => {
   const navigate = useNavigate(); // Initialize useNavigate
 
   const handleButtonClick = () => {
-    navigate('/about'); // Navigate to the /about route when button is clicked
+    navigate('/userdashboard/about'); // Navigate to the /about route when button is clicked
   };
 
   const logoutPressed = () => {
@@ -35,4 +35,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default UserHomepage;

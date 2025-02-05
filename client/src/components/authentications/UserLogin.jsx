@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
-const Login = () => {
+const UserLogin = () => {
   const { login } = useContext(AuthContext); // Use login function from AuthContext
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,8 +25,8 @@ const Login = () => {
       });
 
       if (response.status === 200) {
-        login(); // Set user as authenticated in AuthContext
-        navigate("/"); // Redirect to homepage
+        login();
+        navigate("/userdashboard"); 
       } else {
         setError("Invalid credentials");
       }
@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   const handleRegister = () => {
-    navigate("/register"); // Navigate to the /register route when button is clicked
+    navigate("/userregister"); // Navigate to the /register route when button is clicked
   };
 
   return (
@@ -101,4 +101,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default UserLogin;
