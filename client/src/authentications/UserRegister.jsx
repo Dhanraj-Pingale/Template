@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 const UserRegister = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ const UserRegister = () => {
       .post("http://localhost:3000/auth/registerdb", { name, email, password })
       .then((result) => {
         console.log(result);
-        navigate("/login");
+        navigate("/userlogin");
       })
       .catch((err) => {
         console.log(err);
@@ -26,7 +27,7 @@ const UserRegister = () => {
   };
 
   const handleLoginRedirect = () => {
-    navigate("/login");
+    navigate("/userlogin");
   };
 
   return (

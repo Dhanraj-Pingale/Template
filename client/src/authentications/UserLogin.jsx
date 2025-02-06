@@ -14,29 +14,31 @@ const UserLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading
-    setError(null); // Clear previous errors
+    setLoading(true);
+    setError(null);
 
     try {
-      // API call to authenticate user
-      const response = await axios.post("http://localhost:3000/auth/logindb", {
-        email,
-        password,
-      }, { withCredentials: true });
+      const response = await axios.post(
+        "http://localhost:3000/auth/logindb",
+        { email, password },
+        { withCredentials: true }
+      );
 
       if (response.status === 200) {
-        login();
-        navigate("/userdashboard"); 
+        console.log("Login successful, updating context...");
+        login(email, password);
+        navigate("/userdashboard/userhomepage");
       } else {
         setError("Invalid credentials");
       }
     } catch (error) {
       setError("Login failed, please try again.");
-      console.error("Login error", error);
+      console.error("Login error:", error.response?.data || error.message);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
+
 
   const handleRegister = () => {
     navigate("/userregister"); // Navigate to the /register route when button is clicked

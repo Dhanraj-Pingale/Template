@@ -63,16 +63,9 @@ export default function CompanyDashboard() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 bg-gray-100 p-6 overflow-auto">
-        {/* Mobile Header */}
-        {/* <div className="md:hidden flex items-center justify-between bg-blue-900 text-white p-4">
-          <button onClick={() => setMobileOpen(!mobileOpen)}>
-            <FiMenu className="text-2xl" />
-          </button>
-          <h1 className="text-lg font-bold">Avinya</h1>
-        </div> */}
+      <div className="flex-1 bg-gray-100 overflow-auto">
         {/* Content */}
-        <div className="mt-4">{currentSection === "userhomepage" ? <Outlet /> : <Outlet />}</div>
+        <div>{currentSection === "userhomepage" ? <Outlet /> : <Outlet />}</div>
       </div>
     </div>
   );
