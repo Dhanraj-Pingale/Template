@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
 const UserLogin = () => {
@@ -22,7 +22,7 @@ const UserLogin = () => {
       const response = await axios.post("http://localhost:3000/auth/logindb", {
         email,
         password,
-      });
+      }, { withCredentials: true });
 
       if (response.status === 200) {
         login();

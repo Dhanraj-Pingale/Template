@@ -1,7 +1,17 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "./context/AuthContext"; // Assuming AuthContext is in this location
 
 const Landingpage = () => {
+  const { isAuthenticated } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/userdashboard/userhomepage"); // Redirect to user homepage if already authenticated
+    }
+  }, [isAuthenticated, navigate]);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white shadow-lg rounded-xl p-10 max-w-md w-full text-center">
