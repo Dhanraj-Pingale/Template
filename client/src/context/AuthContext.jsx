@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
     axios
       .get("http://localhost:3000/auth/session", { withCredentials: true })
       .then((res) => {
-        console.log(res.data);
+        console.log("User Context", res.data);
         if (res.data.isAuthenticated) {
           setIsAuthenticated(true);
           setUser(res.data.user);

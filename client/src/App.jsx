@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import ProtectedRoute from "./authentications/ProtectedRoute";
 import AuthProvider from "./context/AuthContext";
+import AdminAuthProvider from "./context/AdminContext";
 import Landingpage from "./Landingpage";
 
 //user
@@ -60,7 +61,9 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <AuthProvider>
+      <AdminAuthProvider>
       <RouterProvider router={router} />
+      </AdminAuthProvider>
     </AuthProvider>
   );
 };

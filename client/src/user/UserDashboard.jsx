@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
 import { FiMenu, FiLogOut, FiHome, FiInfo } from "react-icons/fi";
 
-export default function CompanyDashboard() {
+export default function UserDashboard() {
   const [isHovered, setIsHovered] = useState(false);
 //   const [mobileOpen, setMobileOpen] = useState(false);
   const [currentSection, setCurrentSection] = useState("company");
@@ -19,7 +19,7 @@ export default function CompanyDashboard() {
   };
 
   const menuItems = [
-    { label: "UserDashboard", section: "/userdashboard/userhomepage", icon: <FiHome /> },
+    { label: "Home", section: "/userdashboard/userhomepage", icon: <FiHome /> },
     { label: "About", section: "/userdashboard/about", icon: <FiInfo /> },
   ];
 
@@ -33,7 +33,7 @@ export default function CompanyDashboard() {
       >
         {/* Logo */}
         <div className="flex items-center justify-center p-4">
-          {isHovered && <h1 className="text-lg font-bold">Avinya</h1>}
+          {isHovered && <h1 className="text-lg font-bold">USER</h1>}
         </div>
         {/* Menu Items */}
         <nav className="flex-1">

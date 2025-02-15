@@ -1,16 +1,26 @@
 import React, { useContext, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext"; // Assuming AuthContext is in this location
+import { AdminAuthContext } from "./context/AdminContext"; // Assuming AdminAuthContext is in this location
 
 const Landingpage = () => {
   const { isAuthenticated } = useContext(AuthContext);
+  const { isAdminAuthenticated } = useContext(AdminAuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/userdashboard/userhomepage"); // Redirect to user homepage if already authenticated
     }
+
   }, [isAuthenticated, navigate]);
+
+  useEffect(() => {
+    if (isAdminAuthenticated) {
+      navigate("/admindashboard/adminhomepage"); // Redirect to admin homepage if already authenticated
+    }
+
+  }, [isAdminAuthenticated, navigate]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

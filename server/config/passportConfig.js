@@ -1,41 +1,28 @@
-import passport from "passport";
-import { Strategy as LocalStrategy } from "passport-local";
-import bcrypt from "bcryptjs";
-import User from "../models/User.js";
+// config/passportConfig.js
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
+import bcrypt from 'bcryptjs';
+import User from '../models/User.js';
 
-const initializePassport = () => {
+function initializePassport() {
   passport.use(
-    new LocalStrategy(
-      { usernameField: "email" },
-      async (email, password, done) => {
-        try {
-          const user = await User.findOne({ email });
+    new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
+      try {
+        const user = await User.findOne({ email });
+        if (!user) return done(null, false, { message: 'No user found' });
 
-          if (!user) {
-            console.log("User not found");
-            return done(null, false, { message: "Incorrect email." });
-          }
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) return done(null, false, { message: 'Wrong password' });
 
-          // Compare the password using bcrypt
-          const isValidPassword = await bcrypt.compare(password, user.password);
-
-          if (!isValidPassword) {
-            console.log("Password does not match");
-            return done(null, false, { message: "Incorrect password." });
-          }
-
-          console.log("Login successful");
-          return done(null, user);
-        } catch (error) {
-          console.error("Error during login:", error);
-          return done(error);
-        }
+        return done(null, user);
+      } catch (error) {
+        return done(error);
       }
-    )
+    })
   );
 
   passport.serializeUser((user, done) => {
-    done(null, user._id);
+    done(null, user.id);
   });
 
   passport.deserializeUser(async (id, done) => {
@@ -46,6 +33,6 @@ const initializePassport = () => {
       done(error);
     }
   });
-};
+}
 
 export default initializePassport;
